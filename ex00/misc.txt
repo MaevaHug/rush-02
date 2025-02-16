@@ -1,0 +1,15 @@
+En espagnol, "ciento" (100) est utilisé lorsqu'il est suivi d'un autre nombre.
+
+199 : one hundred and ninety-nine
+120 : one hundred and twenty (UK)
+120 : one hundred twenty (US)
+
+356 : trescientos cincuenta y seis
+147: ciento curenta y siete
+
+
+Attention
+- Makefile (wildcards)
+- Dict Error si conversion échoue
+- parsing du dictionnaire -> clé ? -> atoi ??
+- idem input ? atoi ? signes ? espaces ???
