@@ -12,4 +12,3 @@ Attention
 - Makefile (wildcards)
 - Dict Error si conversion échoue
 - parsing du dictionnaire -> clé ? -> atoi ??
-- idem input ? atoi ? signes ? espaces ???
