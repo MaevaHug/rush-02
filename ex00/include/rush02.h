@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:01:20 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/15 08:15:24 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:03:57 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@
 
 # define BUFFER_SIZE 1024
 
+typedef enum e_lang		t_lang;
 typedef enum e_error	t_error;
 typedef struct s_dict	t_dict;
 typedef struct s_block	t_block;
+
+enum e_lang
+{
+	UNKNOW,
+	EN,
+	ES
+};
 
 enum e_error
 {
@@ -48,7 +56,7 @@ struct s_block
 int				parse_args(int ac, char **av, char **file, char **nb_str);
 
 // parse_dict
-int				parse_dict(char *file, t_dict **dict);
+int				parse_dict(char *file, t_lang *language, t_dict **dict);
 
 // convert_number
 int				convert_number(char *nb_str, t_dict *dict, char **result);
@@ -56,7 +64,11 @@ int				convert_number(char *nb_str, t_dict *dict, char **result);
 // convert_block
 int				convert_block(t_block *block, t_dict *dict, char **result);
 
+// convert_block_es
+int	convert_block_es(t_block *block, t_dict *dict, char **result);
+
 // convert_utils
+int				add_separator(char *separator, char **result);
 char			*remove_leading_zeros(char *str);
 int				add_powered_number(
 					char first_digit, int power, t_dict *dict, char **result);
@@ -86,6 +98,7 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 char			*ft_strchr(char *str, int c);
 void			ft_putstr_nl_fd(char *str, int fd);
 int				ft_strncmp(char *s1, char *s2, unsigned int n);
+int				ft_strcmp(char *s1, char *s2);
 
 // whitespaces
 char			*trim_whitespaces(char *str, int start, int mid, int end);
