@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 07:49:43 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/15 08:15:27 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:06:43 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,12 @@ static int	convert_blocks(
 	{
 		if (!blocks[i].is_silent)
 		{
-			if (!convert_block(&blocks[i], dict, result))
+			if (!convert_block_es(&blocks[i], dict, result))
 				return (0);
 			if (blocks[i].power > 0)
 			{
-				if (!add_powered_number('1', blocks[i].power, dict, result))
+				if (!add_separator(" ", result)
+					|| !add_powered_number('1', blocks[i].power, dict, result))
 					return (0);
 			}
 		}

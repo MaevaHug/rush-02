@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:19:17 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/15 08:11:33 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:07:15 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,18 @@ int	parse_dict_entries(char *content, t_dict *dict, int n_entries)
 	return (1);
 }
 
-int	parse_dict(char *file, t_dict **dict)
+
+t_lang	get_dict_language(char *file)
+{
+	if (ft_strcmp(file, "numbers.dict") == 0)
+		return (EN);
+	else if (ft_strcmp(file, "numbers_esp.dict") == 0)
+		return (ES);
+	else
+		return (UNKNOW);
+}
+
+int	parse_dict(char *file, t_lang *language, t_dict **dict)
 {
 	int		fd;
 	char	*content;
@@ -79,13 +90,10 @@ int	parse_dict(char *file, t_dict **dict)
 		close_file(fd);
 		return (0);
 	}
+	*language = get_dict_language(file);
 	close_file(fd);
-	if (!validate_dict(content, &n_entries) || !init_dict(dict, n_entries))
-	{
-		free(content);
-		return (0);
-	}
-	if (!parse_dict_entries(content, *dict, n_entries))
+	if (!validate_dict(content, &n_entries) || !init_dict(dict, n_entries)
+		|| !parse_dict_entries(content, *dict, n_entries))
 	{
 		free(content);
 		return (0);

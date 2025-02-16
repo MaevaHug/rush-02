@@ -6,11 +6,19 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 07:50:08 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/15 08:05:58 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:06:14 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
+
+int	add_separator(char *separator, char **result)
+{
+	if (**result == '\0')
+		return (1);
+	else
+		return (append_to_result(result, separator));
+}
 
 char	*remove_leading_zeros(char *str)
 {

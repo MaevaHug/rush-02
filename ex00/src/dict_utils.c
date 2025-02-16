@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 07:10:07 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/15 08:11:01 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:05:59 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	add_dict_value_to_result(t_dict *dict, char *key, int len, char **result)
 	value = get_value_from_dict(dict, key, len);
 	if (!value)
 		return (0);
-	if (**result != '\0')
-	{
-		if (!append_to_result(result, " "))
-			return (0);
-	}
+	// if (**result != '\0')
+	// {
+	// 	if (!append_to_result(result, " "))
+	// 		return (0);
+	// }
 	if (!append_to_result(result, value))
 		return (0);
 	return (1);
