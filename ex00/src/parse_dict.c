@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:19:17 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:07:15 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:25:55 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int	parse_dict_entries(char *content, t_dict *dict, int n_entries)
 	}
 	return (1);
 }
-
 
 t_lang	get_dict_language(char *file)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_block_no_language.c                        :+:      :+:    :+:   */
+/*   convert_block_en.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/16 15:05:41 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 15:11:39 by mahug            ###   ########.fr       */
+/*   Created: 2025/02/15 07:49:56 by mahug             #+#    #+#             */
+/*   Updated: 2025/02/16 15:19:18 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,20 @@ static int	process_tens(t_block block, t_dict *dict, char **result)
 
 static int	process_units(t_block block, t_dict *dict, char **result)
 {
-	if (!add_separator(" ", result))
-		return (0);
+	if (block.nb[1] == '0')
+	{
+		if (!add_separator(" ", result))
+			return (0);
+	}
+	else
+	{
+		if (!add_separator("-", result))
+			return (0);
+	}
 	return (add_dict_value_to_result(dict, &block.nb[2], 1, result));
 }
 
-int	convert_block(t_block *block, t_dict *dict, char **result)
+int	convert_block_en(t_block *block, t_dict *dict, char **result)
 {
 	if (block->nb[0] != '0')
 	{

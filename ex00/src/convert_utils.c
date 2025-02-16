@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 07:50:08 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:06:14 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 16:56:59 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,33 @@ int	add_powered_number(char first_digit, int power, t_dict *dict, char **result)
 		return (0);
 	}
 	free(powered);
+	return (1);
+}
+
+int	add_powered_number_es(int power, t_dict *dict, char **result)
+{
+	(void)dict;
+	if (power == 6 && !append_to_result(result, "millones"))
+		return (0);
+	if (power == 9 && !append_to_result(result, "billones"))
+		return (0);
+	if (power == 12 && !append_to_result(result, "trillones"))
+		return (0);
+	if (power == 15 && !append_to_result(result, "cuatrillones"))
+		return (0);
+	if (power == 18 && !append_to_result(result, "quintillones"))
+		return (0);
+	if (power == 21 && !append_to_result(result, "sextillones"))
+		return (0);
+	if (power == 24 && !append_to_result(result, "septillones"))
+		return (0);
+	if (power == 27 && !append_to_result(result, "octillones"))
+		return (0);
+	if (power == 30 && !append_to_result(result, "nonillones"))
+		return (0);
+	if (power == 33 && !append_to_result(result, "decillones"))
+		return (0);
+	if (power == 36 && !append_to_result(result, "undecillones"))
+		return (0);
 	return (1);
 }

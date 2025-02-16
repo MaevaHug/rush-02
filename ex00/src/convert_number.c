@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 07:49:43 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:06:43 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 17:20:50 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,40 +64,27 @@ static int	parse_nb_str_into_blocks(
 	return (1);
 }
 
-static int	convert_blocks(
-	t_block *blocks, int n_blocks, t_dict *dict, char **result)
+void	fill_function_pointer_tab(
+	int (*convert[])(t_block *, int, t_dict *, char **))
 {
-	int	i;
-
-	i = 0;
-	while (i < n_blocks)
-	{
-		if (!blocks[i].is_silent)
-		{
-			if (!convert_block_es(&blocks[i], dict, result))
-				return (0);
-			if (blocks[i].power > 0)
-			{
-				if (!add_separator(" ", result)
-					|| !add_powered_number('1', blocks[i].power, dict, result))
-					return (0);
-			}
-		}
-		i++;
-	}
-	return (1);
+	convert[UNKNOW] = &convert_blocks;
+	convert[EN] = &convert_blocks_en;
+	convert[ES] = &convert_blocks_es;
 }
 
-int	convert_number(char *nb_str, t_dict *dict, char **result)
+int	convert_number(t_lang language, char *nb_str, t_dict *dict, char **result)
 {
 	t_block	*blocks;
 	int		n_blocks;
+	int		(*convert[3])(
+			t_block *blocks, int n_blocks, t_dict *dict, char **result);
 
 	if (!init_buffer(result))
 		return (0);
 	if (!parse_nb_str_into_blocks(nb_str, &blocks, &n_blocks))
 		return (0);
-	if (!convert_blocks(blocks, n_blocks, dict, result))
+	fill_function_pointer_tab(convert);
+	if (!convert[language](blocks, n_blocks, dict, result))
 	{
 		free(blocks);
 		return (0);

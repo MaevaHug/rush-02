@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:01:20 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:03:57 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 17:16:48 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+# include <stdio.h> // TEST
 
 # define BUFFER_SIZE 1024
 
@@ -59,19 +61,32 @@ int				parse_args(int ac, char **av, char **file, char **nb_str);
 int				parse_dict(char *file, t_lang *language, t_dict **dict);
 
 // convert_number
-int				convert_number(char *nb_str, t_dict *dict, char **result);
+int				convert_number(
+					t_lang language, char *nb_str, t_dict *dict, char **result);
 
 // convert_block
 int				convert_block(t_block *block, t_dict *dict, char **result);
 
+// convert_block_en
+int				convert_block_en(t_block *block, t_dict *dict, char **result);
+
 // convert_block_es
-int	convert_block_es(t_block *block, t_dict *dict, char **result);
+int				convert_block_es(t_block *block, t_dict *dict, char **result);
+
+// convert_blocks
+int				convert_blocks_es(
+					t_block *blocks, int n_blocks, t_dict *dict, char **result);
+int				convert_blocks_en(
+					t_block *blocks, int n_blocks, t_dict *dict, char **result);
+int				convert_blocks(
+					t_block *blocks, int n_blocks, t_dict *dict, char **result);
 
 // convert_utils
 int				add_separator(char *separator, char **result);
 char			*remove_leading_zeros(char *str);
 int				add_powered_number(
 					char first_digit, int power, t_dict *dict, char **result);
+int				add_powered_number_es(int power, t_dict *dict, char **result);
 
 // dict_utils
 void			free_dict(t_dict *dict);

@@ -6,20 +6,11 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:09:40 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:07:00 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 11:25:20 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
-
-int	ft_str_is_numeric(char *str)
-{
-	if (!*str)
-		return (0);
-	while (*str >= '0' && *str <= '9')
-		str++;
-	return (*str == '\0');
-}
 
 int	ft_strlen(char *str)
 {
@@ -29,13 +20,6 @@ int	ft_strlen(char *str)
 	while (str[len])
 		len++;
 	return (len);
-}
-
-void	ft_putstr_nl_fd(char *str, int fd)
-{
-	while (*str)
-		write(fd, str++, 1);
-	write(fd, "\n", 1);
 }
 
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)

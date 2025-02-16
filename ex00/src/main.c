@@ -6,7 +6,7 @@
 /*   By: mahug <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 06:05:29 by mahug             #+#    #+#             */
-/*   Updated: 2025/02/16 11:05:49 by mahug            ###   ########.fr       */
+/*   Updated: 2025/02/16 15:44:19 by mahug            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 		return (clean_exit(dict, result, ERROR));
 	if (!parse_dict(file, &language, &dict))
 		return (clean_exit(dict, result, DICT_ERROR));
-	if (!convert_number(nb_str, dict, &result))
+	if (!convert_number(language, nb_str, dict, &result))
 		return (clean_exit(dict, result, DICT_ERROR));
 	ft_putstr_nl_fd(result, 1);
 	return (clean_exit(dict, result, NO_ERROR));
